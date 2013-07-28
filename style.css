@@ -1,0 +1,31 @@
+.tick,
+.control {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	border: 1px solid black;
+	border-left-width: 0;
+	cursor: pointer;
+	text-align: center;
+}
+.tick:first-child,
+.control:first-child {
+	border-left-width: 1px;
+}
+.control {
+	width: 100px;
+	line-height: 50px;
+	font-weight: bolder;
+}
+.group-0 {
+	background-color: rgba(150, 150, 150, 0.6);
+}
+.group-0.active {
+	background-color: rgba(50, 100, 250, 0.6);
+}
+.group-1 {
+	background-color: rgba(150, 150, 150, 0.8);
+}
+.group-1.active {
+	background-color: rgba(50, 100, 250, 0.8);
+}
