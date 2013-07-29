@@ -17,7 +17,7 @@ function init() {
 			set(name, system[name]);
 		}
 	});
-	set('active', 0);
+	set('active', system['active']);
 	servoStream = fs.createWriteStream(path.join(basePath, 'servo'));
 }
 
