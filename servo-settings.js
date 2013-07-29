@@ -2,8 +2,9 @@ var servoInitialValue = 0;
 
 module.exports = {
 	drum: {
-		servo_rest: servoInitialValue,
-		servo_beat: 10
+		servoRest: servoInitialValue,
+		servoBeat: 10,
+		restBeatDelay: 100
 	},
 	system: {
 		active: 1,

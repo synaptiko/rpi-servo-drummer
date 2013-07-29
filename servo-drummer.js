@@ -2,6 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var basePath = (process.env.TEST ? path.join(__dirname, 'test-pwm0') : '/sys/class/rpi-pwm/pwm0/');
 var settings = require('./servo-settings');
+var servoStream;
 
 function set(name, value) {
 	value = value + '';
@@ -12,8 +13,12 @@ function init() {
 	var system = settings.system;
 
 	Object.keys(system).forEach(function(name) {
-		set(name, system[name]);
+		if (name !== 'active') { // active has to be last
+			set(name, system[name]);
+		}
 	});
+	set('active', 0);
+	servoStream = fs.createWriteStream(path.join(basePath, 'servo'));
 }
 
 function play(data) {
@@ -32,12 +37,10 @@ function play(data) {
 function tick() {
 	var drum = settings.drum;
 
-	console.log('tick');
-	// TODO
-	// 1. create fd for 'servo' file
-	// 2. try if \n is working as separator of values
-	// 3. if so, use one stream for whole play method
-	// 4. close it after last tick
+	servoStream.write(settings.drum.servoBeat + '');
+	setTimeout(function() {
+		servoStream.write(settings.drum.servoBeat + '');
+	}, settings.drum.restBeatDelay);
 }
 
 module.exports = {
