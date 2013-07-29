@@ -4,7 +4,7 @@ module.exports = {
 	drum: {
 		servoRest: servoInitialValue,
 		servoBeat: 10,
-		restBeatDelay: 100
+		restBeatDelay: 200
 	},
 	system: {
 		active: 1,

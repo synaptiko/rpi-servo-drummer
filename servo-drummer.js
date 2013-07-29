@@ -37,6 +37,7 @@ function play(data) {
 function tick() {
 	var drum = settings.drum;
 
+	console.log('tick');
 	servoStream.write(settings.drum.servoBeat + '');
 	setTimeout(function() {
 		servoStream.write(settings.drum.servoBeat + '');
